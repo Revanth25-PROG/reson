@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrainCircuit, CheckCircle, XCircle, Lightbulb, Loader2 } from 'lucide-react';
 import { useAppStore } from '../store/useAppStore';
@@ -49,7 +49,7 @@ export default function Solve() {
     setIsCorrect(correct);
     setIsSubmitted(true);
 
-    fetch('http://localhost:5000/api/questions/submit', {
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/questions/submit`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

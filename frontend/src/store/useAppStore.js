@@ -1,4 +1,4 @@
-﻿import { create } from 'zustand';
+import { create } from 'zustand';
 
 export const useAppStore = create((set, get) => ({
   user_id: 'guest_user_123',
@@ -14,7 +14,7 @@ export const useAppStore = create((set, get) => ({
   generateNow: async (topic, difficulty) => {
     set({ isGenerating: true });
     try {
-      const res = await fetch('http://localhost:5000/api/questions/generate', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/questions/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic, difficulty })
@@ -35,7 +35,7 @@ export const useAppStore = create((set, get) => ({
     if (get().isPreloading) return;
     set({ isPreloading: true, nextQuestion: null });
     try {
-      const res = await fetch('http://localhost:5000/api/questions/generate', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/questions/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic, difficulty })
