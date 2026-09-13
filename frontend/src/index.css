@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-primary: #3b82f6;
+  --color-secondary: #a855f7;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+}
+
+body {
+  background-color: var(--color-background);
+  @apply text-slate-100 font-sans;
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
